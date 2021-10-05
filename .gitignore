@@ -1,0 +1,5 @@
+*.idea
+local_driver/
+allure-results/
+target/
+reports/
