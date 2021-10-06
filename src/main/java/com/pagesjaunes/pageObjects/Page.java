@@ -160,7 +160,6 @@ public class Page {
         js.executeScript("window.scrollBy(0,"+height+")");
     }
 
-
     public String getScrollPosition( ){
         return (js.executeScript("return window.pageYOffset;").toString());
     }

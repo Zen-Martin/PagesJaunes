@@ -13,7 +13,7 @@ Feature: Re-Test Cases for PAGES-JAUNES Website without account Access
     But The form takes into account numeric values
 
   @Bug_1380
-  @Severity=minor
+  @severity=minor
   Scenario: the site accepts emojis
     When I click on the link *Protection de la vie privée*
     And I click on the first link *Ce formulaire*
@@ -22,7 +22,7 @@ Feature: Re-Test Cases for PAGES-JAUNES Website without account Access
     But The form accepts emoji
 
   @Bug_1381
-  @Severity=critical
+  @severity=critical
   Scenario: Page without content
     When Scroll down to the footer Click on the tab *CGU des services du compte*
     And In the section *1- Definitions* at the end of level *Charte Editorial* Click on The link *Ici*
@@ -32,7 +32,7 @@ Feature: Re-Test Cases for PAGES-JAUNES Website without account Access
     But Unavailability of the requested page
 
   @Bug_1382
-  @Severity=critical
+  @severity=critical
   Scenario: Unavailability of a page on the website
     When I click on the link *Protection de la vie privée*
     And Scroll down to the section *Historique de recherches et de résultats*
@@ -66,7 +66,7 @@ Feature: Re-Test Cases for PAGES-JAUNES Website without account Access
     But The banner for scrolling through the choices in the filter field does not work
 
   @Bug_1444
-  @Severity=minor
+  @severity=minor
   Scenario: Impossibility after liking a comment, to remove it
     When I click on the link *Livraison à domicile*
     And I select *la boulangerie Poilâne*
@@ -76,7 +76,7 @@ Feature: Re-Test Cases for PAGES-JAUNES Website without account Access
     But It is impossible for us after having liked a comment to remove it
 
   @Recommendation_1454
-  @Severity=minor
+  @severity=minor
   Scenario: Ease of paginating
     When I am doing a research on *conseils en organisation gestion management* à *bordeaux-33000*
     And I valid
