@@ -38,6 +38,16 @@ public class LoginPage extends Page{
     @FindBy(xpath = "//body/main[@id='main']/section[1]/div[2]/div[1]/div[1]/section[1]/div[1]/span[1]")
     private WebElement modifyProfil;
 
+    @FindBy(xpath = "//body/main[@id='main']/section[1]/div[2]/div[1]/div[1]/section[1]/div[1]/div[1]")
+    private WebElement profilField;
+
+    @FindBy(xpath = "//body/main[@id='main']/section[1]/div[2]/div[1]/div[1]/section[1]/div[1]/button[1]")
+    private WebElement updateProfil;
+
+    @FindBy(id = "pj_user_avatar_file")
+    private WebElement addFile;
+
+
     @FindBy(id = "pj_user_profile_modify_nickname")
     private WebElement nickNameField;
 
@@ -84,6 +94,15 @@ public class LoginPage extends Page{
         }
     }
 
+    public void profilValidation(){
+        shortUntil(visibilityOf(profilField));
+        instantModificationStatut = getProfilField();
+        if (modifySequence!=0){
+            setProfilePicture();
+            instantModificationStatut = getProfilField();
+        }
+    }
+
     public void getOnNickname(){
         shortUntil(visibilityOf(modifyAccount));
         clickOn(modifyAccount);
@@ -91,11 +110,10 @@ public class LoginPage extends Page{
         shortUntil(visibilityOf(nickNameField));
     }
 
-    public void getOnProfilePicture(){
-        shortUntil(visibilityOf(modifyProfil));
-        if(modifyProfil.isDisplayed()){
-            instantModificationStatut = false;
-        }
+    public void setProfilePicture(){
+            clickOn(updateProfil);
+            addFile.sendKeys(System.getProperty("user.dir")+"/src/test/resources/image/Profil.png");
+            refresh_page();
     }
 
     public boolean getNickNameField(){
@@ -107,6 +125,19 @@ public class LoginPage extends Page{
             modifySequence += 1;
             return true;
         }
+    }
+
+    public boolean getProfilField(){
+        try{
+            if (modifyProfil.isDisplayed()){
+                modifySequence += 0;
+                return false;
+            }
+
+        }catch(Exception e){
+            modifySequence += 1;
+        }
+        return true;
     }
 
     public void setNickName(){
@@ -168,7 +199,7 @@ public class LoginPage extends Page{
     public boolean verifyInstantProfilModification(){
         System.out.println("\nModification iteration : "+modifySequence
                 +"\nModification instantly statut : "+instantModificationStatut);
-        if (instantModificationStatut==true){
+        if (modifySequence==2 && instantModificationStatut==true){
             System.out.println("\nModificationin instantanee effective : "
                     + "\n\n\tBug Corrigé !!!");
             return true;

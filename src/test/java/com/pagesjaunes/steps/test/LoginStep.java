@@ -38,7 +38,7 @@ public class LoginStep implements En {
         });
 
         When("I modify my profile picture", () -> {
-            loginPage.getOnProfilePicture();
+            loginPage.profilValidation();
         });
 
         Then("Updating the profile picture is not instantaneous", () -> {
