@@ -35,6 +35,9 @@ public class LoginPage extends Page{
     @FindBy(xpath = "//body/main[@id='main']/section[1]/div[2]/div[1]/div[1]/section[1]/a[1]")
     private WebElement modifyAccount;
 
+    @FindBy(xpath = "//body/main[@id='main']/section[1]/div[2]/div[1]/div[1]/section[1]/div[1]/span[1]")
+    private WebElement modifyProfil;
+
     @FindBy(id = "pj_user_profile_modify_nickname")
     private WebElement nickNameField;
 
@@ -88,6 +91,13 @@ public class LoginPage extends Page{
         shortUntil(visibilityOf(nickNameField));
     }
 
+    public void getOnProfilePicture(){
+        shortUntil(visibilityOf(modifyProfil));
+        if(modifyProfil.isDisplayed()){
+            instantModificationStatut = false;
+        }
+    }
+
     public boolean getNickNameField(){
         if (!nickNameField.isEnabled()){
             modifySequence += 0;
@@ -139,10 +149,26 @@ public class LoginPage extends Page{
         return r.toString();
     }
 
-    public boolean verifyInstantModification(){
+    public boolean verifyInstantNicknameModification(){
         System.out.println("\nModification iteration : "+modifySequence
                             +"\nModification instantly statut : "+instantModificationStatut);
         if (modifySequence==2 && instantModificationStatut==true){
+            System.out.println("\nModificationin instantanee effective : "
+                    + "\n\n\tBug Corrigé !!!");
+            return true;
+
+        } else {
+            System.out.println("\nModificationin instantanee non-effective : "
+                    + "\n\n\tBug Non Corrigé !!!");
+            return false;
+        }
+
+    }
+
+    public boolean verifyInstantProfilModification(){
+        System.out.println("\nModification iteration : "+modifySequence
+                +"\nModification instantly statut : "+instantModificationStatut);
+        if (instantModificationStatut==true){
             System.out.println("\nModificationin instantanee effective : "
                     + "\n\n\tBug Corrigé !!!");
             return true;

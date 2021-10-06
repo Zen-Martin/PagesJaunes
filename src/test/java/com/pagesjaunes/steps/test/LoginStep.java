@@ -29,13 +29,24 @@ public class LoginStep implements En {
         });
 
         Then("Immediate taking into account of the new nickname", () -> {
-            loginPage.verifyInstantModification();
+            loginPage.verifyInstantNicknameModification();
         });
 
         But("The taking into account of the new nickname is not automatic", () -> {
             loginPage.saveScreenShotPNG();
-            Assert.assertEquals(loginPage.verifyInstantModification(),true);
+            Assert.assertEquals(loginPage.verifyInstantNicknameModification(),true);
         });
+
+        When("I modify my profile picture", () -> {
+            loginPage.getOnProfilePicture();
+        });
+
+        Then("Updating the profile picture is not instantaneous", () -> {
+            loginPage.verifyInstantProfilModification();
+            loginPage.saveScreenShotPNG();
+            Assert.assertEquals(loginPage.verifyInstantProfilModification(),true);
+        });
+
 
 
     }

@@ -16,7 +16,7 @@ Feature: Re-Test Cases for PAGES-JAUNES Website without account Access
   @Bug_1406
   @severity=minor
   Scenario: The instantaneous disregard of the update of the profile picture
-    When I click on *Information du profil*
+    When I click on the tab *Gerer mon compte*
     And I modify my profile picture
     Then Updating the profile picture is not instantaneous
 
