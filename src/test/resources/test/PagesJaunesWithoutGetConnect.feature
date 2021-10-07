@@ -48,41 +48,6 @@ Feature: Re-Test Cases for PAGES-JAUNES Website without account Access
     And I Click on the link *ne pouvant pas excéder 14 mois*
     Then Non-clickable link
 
-  @Bug_1427
-  @severity=minor
-  Scenario: Continuous presence of question marks on a website page
-    When I click on the link *services utiles livraison a domicile*
-    And I click on *Table Neuf*
-    And I scroll the page
-    Then Presence of question marks on this page of the site
-
-  @Bug_1428
-  @severity=minor
-  Scenario: Problem on the filter from a website page
-    When I click on the link *Livraison à domicile*
-    And I click on *SACHA FINKELSZTAJN - LA BOUTIQUE JAUNE*
-    And I scroll the page to the bottom of the page to sort by
-    Then This banner should be effective
-    But The banner for scrolling through the choices in the filter field does not work
-
-  @Bug_1444
-  @severity=minor
-  Scenario: Impossibility after liking a comment, to remove it
-    When I click on the link *Livraison à domicile*
-    And I select *la boulangerie Poilâne*
-    And I go down the page to the comments level
-    And Trying to like a comment after trying to remove it
-    Then We should be able to dislick a comment once we like it
-    But It is impossible for us after having liked a comment to remove it
-
-  @Recommendation_1454
-  @severity=minor
-  Scenario: Ease of paginating
-    When I am doing a research on *conseils en organisation gestion management* à *bordeaux-33000*
-    And I valid
-    And I browse all of these pages
-    Then It is impossible for us to skip certain pages to arrive at a *page 50*
-
 
 
 

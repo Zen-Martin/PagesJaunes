@@ -29,6 +29,12 @@ public class LoginPage extends Page{
     @FindBy(id = "menu_connexion")
     private WebElement menuConnexion;
 
+    @FindBy(id = "metanav-burger")
+    private WebElement menuDisconnexion;
+
+    @FindBy(id = "metanav-deconnexion")
+    private WebElement disconnexion;
+
     @FindBy(id = "metanav-lien-mon-compte")
     private WebElement manageAccount;
 
@@ -76,6 +82,15 @@ public class LoginPage extends Page{
         passwd.sendKeys(PROP.getPwd());
         passwd.sendKeys(Keys.ENTER);
         shortUntil(invisibilityOf(connexionFrame));
+    }
+
+    public void getDisconnexion(){
+        shortUntil(visibilityOf(menuDisconnexion));
+        clickOn(menuDisconnexion);
+        shortUntil(visibilityOf(disconnexion));
+        clickOn(disconnexion);
+        waitForLoadingPage();
+        shortUntil(visibilityOf(account));
     }
 
     public void getOnModificationPage() {
@@ -131,17 +146,18 @@ public class LoginPage extends Page{
         try{
             if (modifyProfil.isDisplayed()){
                 modifySequence += 0;
-                return false;
+                instantModificationStatut = false;
             }
 
         }catch(Exception e){
             modifySequence += 1;
+            instantModificationStatut = true;
         }
-        return true;
+        return instantModificationStatut;
     }
 
     public void setNickName(){
-        nickNameField.sendKeys(Keys.DELETE);
+        nickNameField.clear();
         nickNameField.sendKeys(generateNickName(5));
         nickNameField.sendKeys(Keys.ENTER);
         waitForLoadingPage();

@@ -19,10 +19,3 @@ Feature: Re-Test Cases for PAGES-JAUNES Website without account Access
     When I click on the tab *Gerer mon compte*
     And I modify my profile picture
     Then Updating the profile picture is not instantaneous
-
-  @Recommendation_1416
-  @severity=minor
-  Scenario:Increase the frame of the filter bar
-    When I am doing a research on *Docteur* in the city of *Lyon*
-    And I am trying to apply a filter by choosing *Internet users rating* as filter choice
-    Then We notice that the filter field is insufficient

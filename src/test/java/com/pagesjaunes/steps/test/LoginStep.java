@@ -34,20 +34,20 @@ public class LoginStep implements En {
 
         But("The taking into account of the new nickname is not automatic", () -> {
             loginPage.saveScreenShotPNG();
+            loginPage.getDisconnexion();
             Assert.assertEquals(loginPage.verifyInstantNicknameModification(),true);
         });
 
         When("I modify my profile picture", () -> {
             loginPage.profilValidation();
+            loginPage.verifyInstantProfilModification();
         });
 
         Then("Updating the profile picture is not instantaneous", () -> {
-            loginPage.verifyInstantProfilModification();
             loginPage.saveScreenShotPNG();
+            loginPage.getDisconnexion();
             Assert.assertEquals(loginPage.verifyInstantProfilModification(),true);
         });
-
-
 
     }
 
